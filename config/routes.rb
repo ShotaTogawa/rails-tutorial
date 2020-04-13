@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   get '/about', to:'static_page#about'
   get '/contact', to:'static_page#contact'
   get  '/signup',  to: 'users#new'
+  post '/signup', to: 'users#create'
+  # RESTfulなUsersリソースで必要となるすべてのアクションが利用できるようになるのです
+  resources :users
 end
