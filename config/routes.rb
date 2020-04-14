@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   get 'users/new'
 
   get 'user/new'
@@ -9,6 +11,9 @@ Rails.application.routes.draw do
   get '/contact', to:'static_page#contact'
   get  '/signup',  to: 'users#new'
   post '/signup', to: 'users#create'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
   # RESTfulなUsersリソースで必要となるすべてのアクションが利用できるようになるのです
   resources :users
 end
