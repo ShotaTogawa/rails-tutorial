@@ -9,7 +9,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   #has_secure_passwordを使うためには、password_digestというカラムがないといけない
   has_secure_password
-  validates :password, presence:true, length: { minimum: 6 }
+  validates :password, presence:true, length: { minimum: 6 }, allow_nil: true
 
     # class << selfを使ってdigestとnew_tokenメソッドを定義する
     # 渡された文字列のハッシュ値を返す
