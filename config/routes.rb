@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  # get 'sessions/new'
 
-  get 'users/new'
+  # get 'users/new'
 
-  get 'user/new'
+  # get 'user/new'
 
   root 'static_page#home'
   get "/help", to:'static_page#help'
@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   # RESTfulなUsersリソースで必要となるすべてのアクションが利用できるようになるのです
   resources :users
+  resources :account_activations, only: [:edit]
 end
