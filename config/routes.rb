@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   # get 'sessions/new'
 
   # get 'users/new'
@@ -17,4 +21,5 @@ Rails.application.routes.draw do
   # RESTfulなUsersリソースで必要となるすべてのアクションが利用できるようになるのです
   resources :users
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:create, :new, :edit, :update]
 end
