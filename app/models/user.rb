@@ -36,13 +36,14 @@ class User < ApplicationRecord
   
     # 渡されたトークンがダイジェストと一致したらtrueを返す
     def authenticated?(attribute, token)
-      digest = send("#{attribute}_digest")
-      return false if remember_digest.nil?
+      digest = self.send("#{attribute}_digest")
+      return false if digest.nil?
       BCrypt::Password.new(digest).is_password?(token)
     end
 
     def activate
-      update_columns(activated: true, activated_at: true)
+      update_attribute(:activated,    true)
+      update_attribute(:activated_at, Time.zone.now)
     end
   
     # 有効化用のメールを送信する
