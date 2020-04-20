@@ -32,6 +32,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
+  test "should redirect following when not logged in" do
+    get following_user_path(@user)
+    assert_redirected_to login_url
+  end
+
+  test "should redirect followers when not logged in" do
+    get followers_user_path(@user)
+    assert_redirected_to login_url
+  end
+
   # test "should not allow the admin attribute to be edited via the web" do
   #   log_in_as(@other_user)
   #   assert_not @other_user.admin?
